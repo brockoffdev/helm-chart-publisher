@@ -38,7 +38,8 @@ func URLJoin(baseURL string, paths ...string) (string, error) {
 	all := []string{u.Path}
 	all = append(all, paths...)
 	u.Path = path.Join(all...)
-	return u.String(), nil
+	fullRL := baseURL + "/" + url.QueryEscape(all[1])
+	return fullRL, nil
 }
 
 // Equal normalizes two URLs and then compares for equality.
